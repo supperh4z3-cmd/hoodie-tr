@@ -103,6 +103,23 @@ function setupMobileNavDrawer() {
 
   backdrop.addEventListener('click', closeDrawer);
 
+  const drawerWishlistBtn = document.getElementById('drawerWishlistBtn');
+  if (drawerWishlistBtn) {
+    drawerWishlistBtn.addEventListener('click', () => {
+      closeDrawer();
+      const wishlistTrigger = document.getElementById('wishlistTriggerBtn');
+      if (wishlistTrigger) wishlistTrigger.click();
+    });
+  }
+
+  const drawerRadioBtn = document.getElementById('drawerRadioBtn');
+  if (drawerRadioBtn) {
+    drawerRadioBtn.addEventListener('click', () => {
+      const radioTrigger = document.getElementById('radioTriggerBtn');
+      if (radioTrigger) radioTrigger.click();
+    });
+  }
+
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
       playClick();

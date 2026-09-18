@@ -2776,19 +2776,205 @@
 }
 
 @media (max-width: 768px) {
-  .featured-cards-grid, .lookbook-staggered-row {
-    grid-template-columns: 1fr;
+  /* --- LOOKBOOK MOBILE OPTIMIZATIONS --- */
+  .lookbook-hero-strip {
+    padding: 2.5rem 0 1.75rem !important;
   }
-  .shop-grid, .related-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
+  .lookbook-main-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.5rem !important;
+    word-break: break-word !important;
+  }
+  .lookbook-main-sub {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+  }
+  .lookbook-gallery-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 4rem !important;
+  }
+  .lookbook-frame-large {
+    margin-bottom: 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .lookbook-caption-bar {
+    position: relative !important;
+    background: #141311 !important;
+    border-top: 1px solid var(--border-medium) !important;
+    padding: 1.25rem 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .frame-tag {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.12em !important;
+  }
+  .frame-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+    margin-top: 0.2rem !important;
+  }
+  .frame-cta-btn {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.74rem !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .featured-cards-grid, .lookbook-staggered-row {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
   }
   .lookbook-card-item.offset-down {
-    margin-top: 0;
+    margin-top: 0 !important;
+  }
+  .lookbook-card-item .item-overlay {
+    padding: 1rem 0.85rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+  }
+  .lookbook-card-item .item-overlay .title {
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+  }
+  .lookbook-card-item .item-overlay .link {
+    font-size: 0.7rem !important;
   }
   .lookbook-credits-box {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 1.25rem 1rem !important;
   }
+  .credit-v {
+    font-size: 0.8rem !important;
+    word-break: break-word !important;
+  }
+
+  /* --- EDITORIAL MOBILE OPTIMIZATIONS --- */
+  .ed-hero {
+    min-height: 75vh !important;
+  }
+  .ed-hero-content {
+    padding: 0 1.25rem !important;
+    bottom: 3.5rem !important;
+  }
+  .ed-hero-title {
+    font-size: clamp(2rem, 8.5vw, 3rem) !important;
+    line-height: 0.96 !important;
+    margin-bottom: 1rem !important;
+  }
+  .ed-hero-sub {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+  }
+  .ed-split-section {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    direction: ltr !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .ed-split-section.reversed {
+    direction: ltr !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .ed-split-section.reversed > * {
+    direction: ltr !important;
+  }
+  .ed-split-visual {
+    width: 100% !important;
+    max-height: 380px !important;
+    aspect-ratio: 4/3 !important;
+    min-height: 260px !important;
+  }
+  .ed-split-text {
+    padding: 2.25rem 1.25rem !important;
+  }
+  .ed-chapter-tag {
+    font-size: 0.68rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .ed-split-title {
+    font-size: clamp(1.15rem, 5.2vw, 1.75rem) !important;
+    line-height: 1.15 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    margin-bottom: 1.1rem !important;
+  }
+  .ed-split-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 0.85rem !important;
+  }
+  .ed-fullwidth-visual {
+    height: 45vh !important;
+  }
+  .ed-pull-quote {
+    font-size: clamp(1.15rem, 5vw, 1.75rem) !important;
+    line-height: 1.25 !important;
+    padding: 0 1rem !important;
+    max-width: 100% !important;
+  }
+  .ed-horizontal-section {
+    padding: 3.5rem 0 2.5rem !important;
+  }
+  .ed-horizontal-scroll {
+    padding: 1.25rem 1rem 1.5rem !important;
+    gap: 1rem !important;
+  }
+  .ed-hscroll-item {
+    flex: 0 0 220px !important;
+  }
+  .ed-moodboard-section {
+    padding: 3.5rem 0 2.5rem !important;
+  }
+  .ed-moodboard-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-auto-rows: 175px !important;
+    gap: 0.5rem !important;
+  }
+  .ed-mood-label {
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+  .ed-closing-section {
+    padding: 3.5rem 1rem !important;
+  }
+  .ed-typewriter-text {
+    font-size: clamp(0.72rem, 3.2vw, 0.92rem) !important;
+  }
+  .ed-closing-cta {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  .ed-closing-cta .btn-cactus-primary,
+  .ed-closing-cta .btn-cactus-outline {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Safe mobile scroll reveals */
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transform: translateY(20px) !important;
+  }
+  .scroll-reveal-left.revealed,
+  .scroll-reveal-right.revealed {
+    transform: translateY(0) !important;
+  }
+
   .fit-banner-strip {
     flex-direction: column;
     align-items: flex-start;
@@ -2800,19 +2986,6 @@
   .stats-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-  .ed-hscroll-item {
-    flex: 0 0 280px;
-  }
-  .ed-moodboard-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 250px;
-  }
-  .ed-hero-title {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-  .ed-split-text {
-    padding: 2.5rem 1.5rem;
   }
   .about-hero-title {
     font-size: clamp(2.5rem, 8vw, 4rem);

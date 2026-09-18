@@ -76,6 +76,13 @@ export function updateWishlistUI() {
     counter.style.display = wishlist.length > 0 ? 'flex' : 'none';
   }
 
+  // Update mobile drawer wishlist counter
+  const drawerCounter = document.getElementById('drawerWishlistCount');
+  if (drawerCounter) {
+    drawerCounter.textContent = wishlist.length;
+    drawerCounter.style.display = wishlist.length > 0 ? 'inline-block' : 'none';
+  }
+
   // Update all wishlist buttons on page
   document.querySelectorAll('.wishlist-toggle-btn').forEach(btn => {
     const pId = btn.dataset.productId;
