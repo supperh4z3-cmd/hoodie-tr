@@ -392,51 +392,53 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: var(--text-pure);
+  gap: 4.5px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: rgba(255, 85, 0, 0.14);
+  border: 1.5px solid var(--accent-flame);
+  color: #ffffff;
   cursor: pointer;
-  clip-path: var(--clip-cut-corner);
-  transition: all 0.25s;
+  border-radius: 4px;
+  clip-path: none;
+  transition: all 0.25s var(--ease-expo);
   padding: 0;
   flex-shrink: 0;
 }
 
 .mobile-nav-toggle:hover {
-  border-color: var(--accent-flame);
-  color: var(--accent-flame);
-  background: rgba(255, 85, 0, 0.1);
+  border-color: #ff7733;
+  background: rgba(255, 85, 0, 0.25);
+  box-shadow: 0 0 14px var(--accent-flame-glow);
 }
 
 .mobile-nav-toggle .nav-line {
-  width: 18px;
+  width: 17px;
   height: 2px;
-  background: currentColor;
+  background: #ffffff;
   border-radius: 1px;
   transition: transform 0.3s var(--ease-expo), opacity 0.3s;
 }
 
 .mobile-nav-toggle.active .nav-line.top {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 .mobile-nav-toggle.active .nav-line.mid {
   opacity: 0;
 }
 .mobile-nav-toggle.active .nav-line.bot {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* Mobile Navigation Drawer & Backdrop */
 .mobile-nav-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 1050;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 12000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -451,13 +453,13 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(88vw, 380px);
+  width: min(88vw, 360px);
   height: 100vh;
   height: 100dvh;
   background: #0d0c0a;
-  border-left: 1px solid rgba(255, 85, 0, 0.25);
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
-  z-index: 1100;
+  border-left: 1px solid rgba(255, 85, 0, 0.35);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.95);
+  z-index: 12001;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -1039,47 +1041,60 @@ body {
     font-size: 0.68rem;
   }
   .cart-drawer {
-    max-width: 100vw;
-    width: 100vw;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }
 
-@media (max-width: 520px) {
-  .section-container {
-    padding: 0 1rem;
-  }
-  .header-inner {
-    padding: 0 0.75rem;
-    gap: 0.4rem;
-  }
-  .brand-logo .brand-main-text {
-    font-size: 0.94rem;
-    letter-spacing: 0.06em;
-  }
-  .header-inner {
-    padding: 0 clamp(0.5rem, 1.5vw, 0.85rem);
-    gap: 0.3rem;
-  }
-  .header-actions {
-    gap: 0.3rem;
-  }
-  .header-action-btn,
-  .radio-toggle-btn,
-  .cart-trigger-btn,
-  .mobile-nav-toggle {
-    height: 32px !important;
-    min-width: 32px !important;
-    padding: 0 0.38rem !important;
-  }
+@media (max-width: 860px) {
   .radio-freq {
     display: none !important;
   }
   .cart-text {
     display: none !important;
   }
+}
+
+@media (max-width: 520px) {
+  .section-container {
+    padding: 0 0.85rem;
+  }
+  .header-inner {
+    padding: 0 clamp(0.4rem, 1.5vw, 0.75rem);
+    gap: 0.25rem;
+  }
+  .brand-logo .brand-main-text {
+    font-size: clamp(0.8rem, 3.4vw, 0.92rem);
+    letter-spacing: 0.05em;
+  }
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.25rem;
+    flex-shrink: 0 !important;
+    flex-wrap: nowrap !important;
+  }
+  .header-action-btn,
+  .radio-toggle-btn,
+  .cart-trigger-btn {
+    height: 34px !important;
+    min-width: 34px !important;
+    padding: 0 0.35rem !important;
+  }
   .mobile-nav-toggle {
-    width: 32px;
-    height: 32px;
+    display: flex !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .radio-freq {
+    display: none !important;
+  }
+  .cart-text {
+    display: none !important;
   }
   .hero-overlay-content {
     padding: 2.25rem 0.85rem 1.5rem;
@@ -1151,27 +1166,36 @@ body {
 
 @media (max-width: 380px) {
   .header-inner {
-    padding: 0 0.4rem;
+    padding: 0 0.35rem;
     gap: 0.2rem;
   }
   .brand-logo .brand-main-text {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
   }
   .header-actions {
-    gap: 0.2rem;
+    gap: 0.18rem;
   }
   .header-action-btn,
   .radio-toggle-btn,
-  .cart-trigger-btn,
-  .mobile-nav-toggle {
-    height: 30px !important;
-    min-width: 30px !important;
+  .cart-trigger-btn {
+    height: 31px !important;
+    min-width: 31px !important;
     padding: 0 0.22rem !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+    width: 31px !important;
+    height: 31px !important;
+    min-width: 31px !important;
+    max-width: 31px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
   }
 }
 
 /* Global mobile horizontal overflow prevention */
-html, body, #app {
-  overflow-x: hidden;
+html, body, #app, main, .section-container {
+  overflow-x: clip;
   max-width: 100vw;
+  box-sizing: border-box;
 }

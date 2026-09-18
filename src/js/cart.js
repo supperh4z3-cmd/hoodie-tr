@@ -75,8 +75,10 @@ export function updateQuantity(itemId, delta) {
 export function openCartDrawer() {
   playClick();
   const backdrop = document.getElementById('cartBackdrop');
+  const drawer = document.getElementById('cartDrawer');
   if (backdrop) {
     backdrop.classList.add('open');
+    if (drawer) drawer.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 }
@@ -84,8 +86,10 @@ export function openCartDrawer() {
 export function closeCartDrawer() {
   playClick();
   const backdrop = document.getElementById('cartBackdrop');
+  const drawer = document.getElementById('cartDrawer');
   if (backdrop) {
     backdrop.classList.remove('open');
+    if (drawer) drawer.classList.remove('open');
     document.body.style.overflow = '';
   }
 }

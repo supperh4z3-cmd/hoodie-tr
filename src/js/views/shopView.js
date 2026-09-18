@@ -50,15 +50,17 @@ export function renderShopView(context) {
 
           <div class="shop-search-sort-row">
             <div class="shop-search-box">
-              <input type="text" id="shopSearchInput" placeholder="ÜRÜN VEYA KUMAŞ ARA..." value="${searchQuery}">
-              <span class="search-icon">🔍</span>
+              <span class="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="shopSearchInput" placeholder="Kumaş veya parça ara..." value="${searchQuery}" autocomplete="off">
             </div>
 
             <div class="shop-sort-box">
-              <select id="shopSortSelect" class="sort-select">
-                <option value="default" ${activeSort === 'default' ? 'selected' : ''}>ÖNERİLEN SIRALAMA</option>
-                <option value="price-asc" ${activeSort === 'price-asc' ? 'selected' : ''}>FİYAT: DÜŞÜKTEN YÜKSEĞE</option>
-                <option value="price-desc" ${activeSort === 'price-desc' ? 'selected' : ''}>FİYAT: YÜKSEKTEN DÜŞÜĞE</option>
+              <select id="shopSortSelect" class="sort-select" aria-label="Sıralama">
+                <option value="default" ${activeSort === 'default' ? 'selected' : ''}>ÖNERİLEN</option>
+                <option value="price-asc" ${activeSort === 'price-asc' ? 'selected' : ''}>FİYAT: ARTAN</option>
+                <option value="price-desc" ${activeSort === 'price-desc' ? 'selected' : ''}>FİYAT: AZALAN</option>
               </select>
             </div>
           </div>
