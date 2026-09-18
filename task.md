@@ -1,0 +1,22 @@
+# Execution Plan: CACTUS FM Radio & E-Commerce Expansion
+
+- `[/]` **1. CACTUS FM Radyo Motoru & Konsolu**
+  - `[ ]` `src/js/radio.js` oluştur (İstasyonlar, Suno MP3 dosya yükleyici, analog frekans cızırtısı, ilk giriş izni).
+  - `[ ]` `index.html`: İlk giriş `#radioPermissionModal`, `#radioTriggerBtn` ve `#radioFmDrawer` ekle.
+  - `[ ]` `src/styles/components.css`: Radyo FM konsolu, analog skala, frekans barları stilleri.
+- `[/]` **2. İstek Listesi / Favoriler (Vault Wishlist)**
+  - `[ ]` `src/js/wishlist.js` oluştur (`localStorage` tabanlı, kart toggle'ları, favoriler çekmecesi).
+  - `[ ]` `index.html`: Header'a `#wishlistTrigger` ve `#wishlistDrawer` ekle.
+  - `[ ]` Ürün kartlarına (shop, home, PDP) favori butonları entegre et.
+- `[/]` **3. Global Arama & Komut Paleti (`Cmd+K`)**
+  - `[ ]` `src/js/search.js` oluştur (`Cmd+K` dinleyicisi, canlı anlık arama, ürün eşleştirme).
+  - `[ ]` `index.html`: Header'a `#searchTrigger` ve `#searchModal` ekle.
+- `[/]` **4. Akıllı Boy/Kilo Beden Danışmanı**
+  - `[ ]` `src/js/modal.js`: Boy ve kilo bazlı interaktif hesaplayıcı sekmesi ve kalıp analiz aracı ekle.
+- `[/]` **5. Sepet İçi Çapraz Satış (Bundle Upsell) & Çok Adımlı Checkout**
+  - `[ ]` `src/js/cart.js`: Çanta drawer'ına %15 indirimli kombin ekleme kartı ekle.
+  - `[ ]` `src/js/cart.js`: Adres, kargo ve kart/3D Secure simülasyonlu çok adımlı checkout akışı yaz.
+- `[/]` **6. Modülleri Entegre Et & Doğrula**
+  - `[ ]` `src/main.js`: Tüm yeni modülleri bağla.
+  - `[ ]` `npm run build` ile 0 hata derleme doğrulaması.
+  - `[ ]` Tarayıcıda tüm özellikleri doğrula.

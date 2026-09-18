@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CACTUS ARCHIVE — Travis Scott Streetwear & Heavyweight Cuts</title>
+    <meta name="description" content="520 GSM oversize hoodie, dekonstrüktif askeri jakarlı hırka ve ultra baggy eşofman modelleri. Travis Scott & Houston sokak modası arşivi." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312110f'/%3E%3Crect x='2' y='2' width='28' height='28' fill='none' stroke='%23ff5500' stroke-width='2'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='14' font-weight='900' fill='%23f5f3ef' text-anchor='middle'%3ECA%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <!-- Film Grain & CRT Scanline Textures -->
+    <div class="noise-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- Custom Reticle Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-group">
+          <a href="#home" class="brand-logo" aria-label="CACTUS ARCHIVE Anasayfa">
+            <span class="brand-main-text">CACTUS ARCHIVE</span>
+          </a>
+          <span class="brand-badge">EST. 2026 // 520 GSM</span>
+        </div>
+
+        <nav class="header-nav">
+          <a href="#home" class="nav-link active" data-route="home">ANASAYFA</a>
+          <a href="#shop" class="nav-link" data-route="shop">KOLEKSİYON</a>
+          <a href="#editorial" class="nav-link" data-route="editorial">EDİTÖRYAL</a>
+          <a href="#about" class="nav-link" data-route="about">HAKKIMIZDA</a>
+          <a href="#lookbook" class="nav-link" data-route="lookbook">LOOKBOOK</a>
+        </nav>
+
+        <div class="header-actions">
+          <!-- Search trigger button -->
+          <button class="header-action-btn" id="searchTriggerBtn" aria-label="Ürün Ara (Cmd+K)" title="Ara (Cmd+K)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="cmd-badge">⌘K</span>
+          </button>
+
+          <!-- Wishlist trigger button -->
+          <button class="header-action-btn wishlist-header-btn" id="wishlistTriggerBtn" aria-label="Favoriler" title="Favoriler">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="wishlist-badge" id="wishlistHeaderCount" style="display: none;">0</span>
+          </button>
+
+          <!-- Radio FM trigger button -->
+          <button class="radio-toggle-btn" id="radioTriggerBtn" title="Cactus FM // 89.2 MHz (Utopia Trap Radio)">
+            <span class="radio-bars" aria-hidden="true">
+              <span class="bar bar-1"></span>
+              <span class="bar bar-2"></span>
+              <span class="bar bar-3"></span>
+              <span class="bar bar-4"></span>
+            </span>
+            <span class="radio-freq" id="radioNavFreq">89.2 FM</span>
+          </button>
+
+          <button class="cart-trigger-btn" id="cartTriggerBtn" aria-label="Alışveriş Çantasını Aç">
+            <svg class="cart-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="cart-text">ÇANTA</span>
+            <span class="cart-counter" id="cartHeaderCount">0</span>
+          </button>
+
+          <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Mobil Menüyü Aç" aria-expanded="false">
+            <span class="nav-line top"></span>
+            <span class="nav-line mid"></span>
+            <span class="nav-line bot"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cyberpunk / Streetwear Mobile Navigation Drawer -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobil Menü" role="dialog" aria-modal="true">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-title">
+          <span style="color: var(--accent-flame); font-weight: 800; margin-right: 6px;">//</span> ARCHIVE MENU
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Menüyü Kapat">✕</button>
+      </div>
+
+      <div class="mobile-nav-stamp">
+        <span>HOUSTON // CIRCUS MAXIMUS</span>
+        <span>520 GSM ARCHIVE</span>
+      </div>
+
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-link active" data-route="home">
+          <span class="link-idx">01</span>
+          <span class="link-text">ANASAYFA</span>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="#shop" class="mobile-link" data-route="shop">
+          <span class="link-idx">02</span>
+          <span class="link-text">KOLEKSİYON</span>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="#editorial" class="mobile-link" data-route="editorial">
+          <span class="link-idx">03</span>
+          <span class="link-text">EDİTÖRYAL</span>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="#about" class="mobile-link" data-route="about">
+          <span class="link-idx">04</span>
+          <span class="link-text">HAKKIMIZDA</span>
+          <span class="link-arrow">→</span>
+        </a>
+        <a href="#lookbook" class="mobile-link" data-route="lookbook">
+          <span class="link-idx">05</span>
+          <span class="link-text">LOOKBOOK</span>
+          <span class="link-arrow">→</span>
+        </a>
+      </nav>
+
+      <div class="mobile-nav-footer">
+        <div class="mobile-status-pill">
+          <span class="rec-dot"></span> LIVE 24 FPS
+        </div>
+        <div class="mobile-geo">29.7604° N, 95.3698° W // HOUSTON, TX</div>
+      </div>
+    </aside>
+
+    <!-- MAIN SPA MOUNT POINT (Home, Shop, Product Detail, Lookbook, About, Editorial) -->
+    <main id="app">
+      <!-- Injected dynamically by Router -->
+    </main>
+
+    <!-- Global Fit Guide Hidden Trigger Button -->
+    <button id="fitGuideBtn" style="display: none;"></button>
+
+    <!-- Asymmetric Cart Drawer -->
+    <div class="cart-backdrop" id="cartBackdrop">
+      <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Alışveriş Çantası">
+        <div class="cart-header">
+          <div class="cart-header-title">
+            <svg class="cart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            ÇANTANIZ
+          </div>
+          <button class="cart-close-btn" id="cartCloseBtn" aria-label="Kapat">✕</button>
+        </div>
+
+        <div class="shipping-progress-wrap">
+          <div class="shipping-text" id="shippingMsg">
+            Ücretsiz kargo için <strong>2.500 ₺</strong> sepet tutarı
+          </div>
+          <div class="shipping-bar-track">
+            <div class="shipping-bar-fill" id="shippingBarFill"></div>
+          </div>
+        </div>
+
+        <div class="cart-items-container" id="cartItemsContainer">
+          <!-- Rendered via cart.js -->
+        </div>
+
+        <div class="cart-footer">
+          <div class="promo-row">
+            <input type="text" class="promo-input" id="cartPromoInput" placeholder="KUPON KODU (CACTUS10)">
+            <button class="promo-btn" id="applyPromoBtn">UYGULA</button>
+          </div>
+
+          <div class="cart-summary-lines">
+            <div class="summary-line">
+              <span>ARA TOPLAM</span>
+              <span id="cartSubtotal">0 ₺</span>
+            </div>
+            <div class="summary-line" id="cartDiscountRow" style="display: none; color: var(--accent-flame);">
+              <span>İNDİRİM</span>
+              <span id="cartDiscount">-0 ₺</span>
+            </div>
+            <div class="summary-line">
+              <span>KARGO</span>
+              <span id="cartShipping">0 ₺</span>
+            </div>
+            <div class="summary-line total">
+              <span>TOPLAM</span>
+              <span id="cartTotal">0 ₺</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn" id="checkoutBtn">
+            <svg class="checkout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            SİPARİŞİ TAMAMLA // ENCRYPTED CHECKOUT
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Brutalist Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            CACTUS ARCHIVE
+          </div>
+          <p>
+            520 GSM ultra ağır pamuk kumaşlar, jakarlı dekonstrüktif kamuflaj hırkalar ve özel puddle kesim baggy eşofmanlar. Travis Scott ve Houston sokak kültürünün ham estetiği.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-flame);">
+            29°45'46"N 95°22'59"W // WORLDWIDE EXPEDITION
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">KAPSÜL SEÇKİSİ</h4>
+          <ul class="footer-links">
+            <li><a href="#shop?category=hoodie">Oversize Hoodie</a></li>
+            <li><a href="#shop?category=cardigan">Yıpratılmış Hırka</a></li>
+            <li><a href="#shop?category=sweatpants">Baggy Eşofman</a></li>
+            <li><a href="#lookbook">Circus Maximus Lookbook</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">SAYFALAR</h4>
+          <ul class="footer-links">
+            <li><a href="#about">Hakkımızda</a></li>
+            <li><a href="#editorial">Editöryal Arşiv</a></li>
+            <li><a href="#shop" onclick="document.getElementById('fitGuideBtn').click()">Beden & Kalıp Rehberi</a></li>
+            <li><a href="#shop">14 Gün İade & Değişim</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">CIRCUS MAXIMUS BÜLTEN</h4>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+            Sınırlı sayıda üretilen (Batch 01) drop'lardan öncelikli haberdar olmak için kaydolun:
+          </p>
+          <div style="display: flex; border: 1px solid var(--border-medium); background: var(--bg-surface); clip-path: var(--clip-cut-corner);">
+            <input type="email" placeholder="E-POSTA ADRESİNİZ" style="background: transparent; border: none; padding: 0.8rem 1rem; color: #fff; font-family: var(--font-mono); font-size: 0.8rem; width: 100%; outline: none;">
+            <button style="background: var(--accent-flame); border: none; color: #fff; font-family: var(--font-mono); font-weight: 700; padding: 0 1.25rem; cursor: pointer;">KATIL</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 CACTUS ARCHIVE // UTOPIA LABS. TÜM HAKLARI SAKLIDIR.</div>
+        <div>HOUSTON DESIGN SYSTEM // BATCH 01 LIMITED</div>
+      </div>
+    <!-- Quick View Modal Container -->
+    <div class="modal-backdrop" id="quickViewModal" role="dialog" aria-modal="true" aria-label="Hızlı Ürün Bakışı">
+      <div class="modal-dialog">
+        <button class="modal-close-btn" id="quickViewCloseBtn" aria-label="Kapat">✕</button>
+        <div class="quick-view-grid" id="quickViewBody"></div>
+      </div>
+    </div>
+
+    <!-- Cactus FM Initial Permission Pop-up -->
+    <div class="modal-backdrop radio-perm-backdrop" id="radioPermissionModal" role="dialog" aria-modal="true">
+      <div class="radio-permission-box">
+        <div class="perm-radio-header">
+          <span class="radio-badge">UTOPIA BROADCAST SYSTEM</span>
+          <span class="perm-station-code">CACTUS FM // 89.2 MHz</span>
+        </div>
+        <h3 class="perm-title">CACTUS ARCHIVE YAYINI BAĞLANSIN MI?</h3>
+        <p class="perm-text">
+          Deneyiminizi güçlendirmek için arka planda Mike Dean prodüksiyonu analog synthler ve 138 BPM 808 Trap bas ritimleri çalınsın mı? İstediğiniz an üst bardan kapatabilir veya kendi Suno parçanızı yükleyebilirsiniz.
+        </p>
+        <div class="perm-buttons-row">
+          <button class="btn-cactus-primary" id="radioApproveBtn">
+            ▶ YAYINI AÇ (89.2 FM)
+          </button>
+          <button class="btn-outline-gothic" id="radioDeclineBtn">
+            SESSİZ DEVAM ET
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cactus FM Tuning Drawer -->
+    <div class="cart-backdrop radio-fm-backdrop" id="radioFmBackdrop">
+      <aside class="cart-drawer radio-fm-drawer" id="radioFmDrawer" role="dialog" aria-modal="true" aria-label="Cactus FM Radyo Konsolu">
+        <div class="cart-header">
+          <div class="cart-header-title">
+            <span class="live-dot-pulse"></span>
+            CACTUS FM // ANALOG CONSOLE
+          </div>
+          <button class="cart-close-btn" id="radioFmClose" aria-label="Kapat">✕</button>
+        </div>
+
+        <div class="radio-console-body">
+          <!-- Frequency Screen -->
+          <div class="radio-tuner-display">
+            <div class="radio-display-top">
+              <span class="freq-tag">STATION TUNER</span>
+              <span class="signal-indicator">SIGNAL: 98% [HOUSTON]</span>
+            </div>
+            <div class="radio-active-freq" id="radioCurrentFreq">89.2 MHz</div>
+            <div class="radio-active-name" id="radioCurrentName">UTOPIA SYNTH TRAP</div>
+            <div class="radio-active-genre" id="radioCurrentGenre">Mike Dean Analog Synth & 808s // 138 BPM</div>
+
+            <!-- Live Visualizer Bars -->
+            <div class="radio-eq-strip">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <!-- Station selector pills -->
+          <div class="radio-section-label">FREKANS SEÇİMİ (CANLI DÖNGÜ)</div>
+          <div class="station-pills-list">
+            <button class="station-pill active" data-station-id="utopia">
+              <span class="pill-freq">89.2</span>
+              <span class="pill-title">UTOPIA TRAP (138 BPM)</span>
+            </button>
+            <button class="station-pill" data-station-id="circus">
+              <span class="pill-freq">95.4</span>
+              <span class="pill-title">CIRCUS MAXIMUS (144 BPM)</span>
+            </button>
+            <button class="station-pill" data-station-id="desert">
+              <span class="pill-freq">102.1</span>
+              <span class="pill-title">NIGHT DESERT (74 BPM)</span>
+            </button>
+            <button class="station-pill" data-station-id="astroworld">
+              <span class="pill-freq">107.5</span>
+              <span class="pill-title">ASTROWORLD VAULT (68 BPM)</span>
+            </button>
+          </div>
+
+          <!-- Continuous Rotation Broadcast Info Box -->
+          <div class="radio-broadcast-info-box">
+            <div class="broadcast-info-header">
+              <span class="broadcast-pulse-dot"></span>
+              <span class="broadcast-title">CANLI ARŞİV YAYINI // SÜREKLİ DÖNGÜ</span>
+            </div>
+            <p class="broadcast-info-desc">
+              Cactus Archive stüdyolarında üretilen 4 analog frekans 24/7 kesintisiz döngüde (continuous rotation) çalar. İstediğiniz frekansa dokunarak anında geçiş yapabilirsiniz.
+            </p>
+          </div>
+
+          <!-- Master Volume Slider -->
+          <div class="radio-volume-control">
+            <div class="vol-label-row">
+              <span>SES DÜZEYİ:</span>
+              <strong id="radioVolPct">75%</strong>
+            </div>
+            <input type="range" min="0" max="100" value="75" class="fit-slider" id="radioVolSlider">
+          </div>
+
+          <!-- Main Play / Stop Button -->
+          <button class="btn-cactus-primary radio-main-play-btn" id="radioMainPlayBtn">
+            ▶ YAYINI BAŞLAT
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Vault Wishlist Drawer -->
+    <div class="cart-backdrop wishlist-backdrop" id="wishlistBackdrop">
+      <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-label="Favori Parçalarım">
+        <div class="cart-header">
+          <div class="cart-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            KAYITLI PARÇALAR (VAULT)
+          </div>
+          <button class="cart-close-btn" id="wishlistCloseBtn" aria-label="Kapat">✕</button>
+        </div>
+
+        <div class="wishlist-status-bar">
+          <span>KAYDEDİLENLER:</span>
+          <strong id="wishlistDrawerTotal">0 PARÇA</strong>
+        </div>
+
+        <div class="wishlist-items-container" id="wishlistItemsContainer">
+          <!-- Rendered via wishlist.js -->
+        </div>
+
+        <div class="wishlist-footer">
+          <button class="btn-cactus-primary" id="wishlistAddAllBtn" style="width: 100%; justify-content: center; display: none;">
+            + TÜM FAVORİLERİ ÇANTAYA EKLE
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Global Search & Command Palette Modal -->
+    <div class="modal-backdrop search-modal-backdrop" id="searchModal" role="dialog" aria-modal="true" aria-label="Koleksiyon Arama">
+      <div class="search-modal-container">
+        <div class="search-input-wrap">
+          <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="globalSearchInput" class="search-input-field" placeholder="Koleksiyonda ara (Örn: hoodie, 520 GSM, cardigan, mocha...)" autocomplete="off">
+          <span class="search-kbd-esc" id="searchCloseBtn">ESC</span>
+        </div>
+
+        <div class="search-filters-bar">
+          <button class="search-filter-tag active" data-filter="all">TÜMÜ</button>
+          <button class="search-filter-tag" data-filter="hoodie">HOODIE</button>
+          <button class="search-filter-tag" data-filter="cardigan">HIRKA</button>
+          <button class="search-filter-tag" data-filter="sweatpants">EŞOFMAN</button>
+        </div>
+
+        <div class="search-results-list" id="searchResultsList">
+          <!-- Injected by search.js -->
+        </div>
+
+        <div class="search-footer-hint">
+          <span><strong>ESC</strong> ile kapat</span>
+          <span><strong>↑ ↓</strong> ile gezin</span>
+          <span><strong>ENTER</strong> ile ürünü aç</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Entry Module -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
