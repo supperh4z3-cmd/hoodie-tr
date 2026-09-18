@@ -119,13 +119,19 @@ export function renderProductDetailView(context) {
             <!-- QUANTITY & ADD TO CART CTA -->
             <div class="pdp-action-row">
               <div class="pdp-qty-stepper">
-                <button class="qty-step-btn" id="pdpQtyMinus">-</button>
+                <button class="qty-step-btn" id="pdpQtyMinus" aria-label="Adet Azalt">-</button>
                 <span class="qty-step-val" id="pdpQtyVal">1</span>
-                <button class="qty-step-btn" id="pdpQtyPlus">+</button>
+                <button class="qty-step-btn" id="pdpQtyPlus" aria-label="Adet Artır">+</button>
               </div>
 
               <button class="pdp-add-cart-btn" id="pdpAddToCartBtn">
-                ${BAG_ICON} ÇANTAYA EKLE [<span id="pdpBtnSizeText">${selectedSize}</span>] // ${(product.price).toLocaleString('tr-TR')} ${brandDetails.currency}
+                <span class="btn-bag-icon">${BAG_ICON}</span>
+                <span class="btn-text-content">
+                  <span class="btn-main-label">ÇANTAYA EKLE</span>
+                  <span class="btn-size-label">[<span id="pdpBtnSizeText">${selectedSize}</span>]</span>
+                </span>
+                <span class="btn-price-divider">//</span>
+                <span class="btn-price-label">${(product.price).toLocaleString('tr-TR')} ${brandDetails.currency}</span>
               </button>
             </div>
 
@@ -176,6 +182,20 @@ export function renderProductDetailView(context) {
           </div>
         </div>
       </div>
+
+      <!-- MOBILE STICKY PURCHASE BAR -->
+      <aside class="pdp-mobile-sticky-bar" id="pdpMobileStickyBar" aria-label="Hızlı Satın Alma Barı">
+        <div class="sticky-bar-info">
+          <img src="${product.image}" alt="${product.name}" class="sticky-bar-thumb">
+          <div class="sticky-bar-meta">
+            <span class="sticky-bar-name">${product.name}</span>
+            <span class="sticky-bar-price">${(product.price).toLocaleString('tr-TR')} ${brandDetails.currency}</span>
+          </div>
+        </div>
+        <button class="sticky-bar-btn" id="pdpStickyAddToCartBtn">
+          ${BAG_ICON} EKLE [<span id="pdpStickySizeText">${selectedSize}</span>]
+        </button>
+      </aside>
     </div>
   `;
 }
@@ -208,6 +228,9 @@ export function mountProductDetailView(context) {
       
       const btnSizeText = document.getElementById('pdpBtnSizeText');
       if (btnSizeText) btnSizeText.textContent = selectedSize;
+
+      const stickySizeText = document.getElementById('pdpStickySizeText');
+      if (stickySizeText) stickySizeText.textContent = selectedSize;
     });
   });
 
@@ -231,10 +254,18 @@ export function mountProductDetailView(context) {
     });
   }
 
-  // Add to cart
+  // Add to cart (main button)
   const addBtn = document.getElementById('pdpAddToCartBtn');
   if (addBtn) {
     addBtn.addEventListener('click', () => {
+      addToCart(product, selectedSize, selectedQty);
+    });
+  }
+
+  // Add to cart (mobile sticky bar button)
+  const stickyAddBtn = document.getElementById('pdpStickyAddToCartBtn');
+  if (stickyAddBtn) {
+    stickyAddBtn.addEventListener('click', () => {
       addToCart(product, selectedSize, selectedQty);
     });
   }
